@@ -1,0 +1,64 @@
+body {
+    text-align: center;
+    background-color: rgb(205, 204, 204);
+}
+
+h1 {
+    color: #333;
+}
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.board {
+    display: grid;
+    grid-template-columns: repeat(20, 1fr);
+    gap: 5px;
+    margin-top: 90px;
+}
+
+.board .cell {
+    width: 30px;
+    height: 30px;
+    font-size: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #954fdf;
+    border-radius: 5px;
+}
+
+.status {
+    margin-top: 20px;
+    font-size: 20px;
+}
+
+#restart {
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #333;
+    color: #fff;
+    border: none;
+    font-size: 16px;
+    border-radius: 25px;
+}
+
+.score {
+    margin-top: 20px;
+    margin-left: 100px;
+}
+
+.score div {
+    font-size: 18px;
+}
+
+.score span {
+    font-weight: bold;
+}
+
+.msg {
+    margin: 12px;
+}
