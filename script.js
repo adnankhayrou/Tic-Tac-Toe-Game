@@ -19,26 +19,23 @@ function checkWinner(row, col) {
 
     // Check horizontal
     for (let j = 0; j < 16; j++) {
-        if(boardState[row][j]=== currentPlayer &&
-            boardState [row][j + 1] === currentPlayer &&
-            boardState [row][j + 2] === currentPlayer &&
-            boardState [row][j + 3] === currentPlayer &&
-            boardState [row][j + 4] === currentPlayer
+        if(boardState[row][j] === currentPlayer && boardState [row][j + 1] === currentPlayer && boardState [row][j + 2] === currentPlayer && 
+            boardState [row][j + 3] === currentPlayer && boardState [row][j + 4] === currentPlayer
         ){
             return true;
         }
     }
+
     // Check vertical
     for (let j = 0; j < 16; j++) {
-            if(boardState[j][col]=== currentPlayer &&
-                boardState [j+1][col] === currentPlayer &&
-                boardState [j+2][col] === currentPlayer &&
-                boardState [j+3][col] === currentPlayer &&
-                boardState [j+4][col] === currentPlayer
-            ){
-                return true;
-            }
+        if(boardState[j][col] === currentPlayer && boardState [j+1][col] === currentPlayer && boardState [j+2][col] === currentPlayer &&
+            boardState [j+3][col] === currentPlayer && boardState [j+4][col] === currentPlayer
+        ){
+            return true;
+        }
     }
+
+    
 
     return false;
 }
@@ -46,15 +43,16 @@ function checkWinner(row, col) {
 function handleClick(e) {
     const row = e.target.dataset.row;
     const col = e.target.dataset.col;
-    
+
     if (boardState[row][col] == "" && gameOver == false) {
         boardState[row][col] = currentPlayer;
         e.target.textContent = currentPlayer;
         movesMade++;
+        message.textContent = `Player ${currentPlayer} Wins!`;
         console.log(movesMade);
 
         if (checkWinner(row, col)) {
-            alert(`Player ${currentPlayer} wins!`);
+            alert(`Player ${currentPlayer} Wins!`);
             if (currentPlayer === "X") {
                 playerXWins++;
                 playerXWinsElement.textContent = playerXWins;
@@ -63,12 +61,12 @@ function handleClick(e) {
                 playerOWinsElement.textContent = playerOWins;
             }
             gameOver = true;
-        } else if (movesMade == 399) {
-            message.textContent = "It's a draw!";
+        } else if (movesMade == 400) {
+            message.textContent = "It's a Draw!";
             gameOver = true;
         } else {
             currentPlayer = currentPlayer === "X" ? "O" : "X";
-            message.textContent = `Player ${currentPlayer} turn`;
+            message.textContent = `Player ${currentPlayer} Turn`;
         }
 
     }
