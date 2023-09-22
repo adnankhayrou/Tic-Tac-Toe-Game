@@ -15,12 +15,14 @@ let movesMade = 0;
 // game board
 GameBoard();
 
+restartButton.addEventListener('click', restartGame);
+
 function checkWinner(row, col) {
 
     // Check horizontal
     for (let j = 0; j < 16; j++) {
         if(boardState[row][j] === currentPlayer && boardState [row][j + 1] === currentPlayer && boardState [row][j + 2] === currentPlayer && 
-            boardState [row][j + 3] === currentPlayer && boardState [row][j + 4] === currentPlayer
+           boardState [row][j + 3] === currentPlayer && boardState [row][j + 4] === currentPlayer
         ){
             return true;
         }
@@ -29,13 +31,34 @@ function checkWinner(row, col) {
     // Check vertical
     for (let j = 0; j < 16; j++) {
         if(boardState[j][col] === currentPlayer && boardState [j+1][col] === currentPlayer && boardState [j+2][col] === currentPlayer &&
-            boardState [j+3][col] === currentPlayer && boardState [j+4][col] === currentPlayer
+           boardState [j+3][col] === currentPlayer && boardState [j+4][col] === currentPlayer
         ){
             return true;
         }
     }
 
-    
+
+    // Check diagonal top-right to bottom-left
+    for (let i = 0; i < 16; i++) {
+        for (let j = 4; j < 20; j++) {
+            if (boardState[i][j] === currentPlayer && boardState[i + 1][j - 1] === currentPlayer && boardState[i + 2][j - 2] === currentPlayer &&
+                boardState[i + 3][j - 3] === currentPlayer && boardState[i + 4][j - 4] === currentPlayer
+            ) {
+                return true;
+            }
+        }
+    }
+
+     // Check diagonal top-left to bottom-right
+     for (let i = 0; i < 16; i++) {
+        for (let j = 0; j < 16; j++) {
+            if (boardState[i][j] === currentPlayer && boardState[i + 1][j + 1] === currentPlayer && boardState[i + 2][j + 2] === currentPlayer &&
+                boardState[i + 3][j + 3] === currentPlayer && boardState[i + 4][j + 4] === currentPlayer
+            ) {
+                return true;
+            }
+        }
+    }
 
     return false;
 }
@@ -99,4 +122,3 @@ function restartGame(){
     gameOver = false;
 }
 
-restartButton.addEventListener('click', restartGame);
