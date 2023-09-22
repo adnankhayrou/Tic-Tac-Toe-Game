@@ -49,7 +49,7 @@ function handleClick(e) {
         e.target.textContent = currentPlayer;
         movesMade++;
         message.textContent = `Player ${currentPlayer} Wins!`;
-        console.log(movesMade);
+        // console.log(movesMade);
 
         if (checkWinner(row, col)) {
             alert(`Player ${currentPlayer} Wins!`);
@@ -85,3 +85,18 @@ function GameBoard(){
         }
     }
 }
+
+function restartGame(){
+    // console.log('test');
+    boardState = Array(20).fill().map(() => Array(20).fill(''));
+    const cell = document.querySelectorAll(".cell");
+    cell.forEach((cell) => {
+        cell.textContent = "";
+    });
+    currentPlayer = "X";
+    message.textContent = `Player X Turn`;
+    movesMade = 0;
+    gameOver = false;
+}
+
+restartButton.addEventListener('click', restartGame);

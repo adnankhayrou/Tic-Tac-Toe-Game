@@ -1,7 +1,14 @@
 body {
     text-align: center;
     font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    background-color: rgb(205, 204, 204);
+    /* background-color: rgb(205, 204, 204); */
+    background-image: url(pic/design-space-paper-textured-background.jpg);
+}
+
+.img {
+    height: 7em;
+    width: 100%;
+    border-radius: 25px;
 }
 
 h1 {
