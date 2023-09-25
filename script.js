@@ -78,13 +78,19 @@ function handleClick(e) {
             alert(`Player ${currentPlayer} Wins!`);
             if (currentPlayer === "X") {
                 playerXWins++;
-                playerXWinsElement.textContent = playerXWins;
+                localStorage.setItem("playerXWins", playerXWins);
+                let getXWinScore = localStorage.getItem("playerXWins");
+                // console.log(getWinScore);
+                playerXWinsElement.textContent = getXWinScore;
             } else {
                 playerOWins++;
-                playerOWinsElement.textContent = playerOWins;
+                localStorage.setItem("playerOWins", playerOWins);
+                let getOWinScore = localStorage.getItem("playerOWins");
+                playerOWinsElement.textContent = getOWinScore;
             }
             gameOver = true;
         } else if (movesMade == 400) {
+            alert("It's a Draw!");
             message.textContent = "It's a Draw!";
             gameOver = true;
         } else {
