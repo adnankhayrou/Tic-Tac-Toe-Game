@@ -66,16 +66,16 @@ function checkWinner(row, col) {
 function handleClick(e) {
     const row = e.target.dataset.row;
     const col = e.target.dataset.col;
-
+    
     if (boardState[row][col] == "" && gameOver == false) {
         boardState[row][col] = currentPlayer;
         e.target.textContent = currentPlayer;
         movesMade++;
-        message.textContent = `Player ${currentPlayer} Wins!`;
         // console.log(movesMade);
-
+        
         if (checkWinner(row, col)) {
             alert(`Player ${currentPlayer} Wins!`);
+            message.textContent = `Player ${currentPlayer} Wins!`;
             if (currentPlayer === "X") {
                 playerXWins++;
                 localStorage.setItem("playerXWins", playerXWins);
